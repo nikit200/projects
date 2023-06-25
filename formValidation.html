@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="form-container">
+      <h2>Login</h2>
+      <form action="" onsubmit="return validateForm()">
+        <input type="text" placeholder="User Name" id="username" /><br />
+        <span id="userError" class="error"></span>
+        <input type="password" placeholder="Password" id="password" /><br />
+        <span id="passError" class="error"></span>
+        <input type="submit" />
+      </form>
+    </div>
+
+    <script>
+      let username = document.getElementById("username");
+      let password = document.getElementById("password");
+      let flag = 1; //validate form set to true
+
+      function validateForm() {
+        if (username.value == "") {
+          document.getElementBId("userError").innerHTML = "User name is empty";
+          flag = 0; //if it is false then the form will not sumbit
+        } else if (username.value.length < 3) {
+          document.getElementById("userError").innerHTML =
+            "Username require min 3 char";
+          flag = 0;
+        } else {
+          document.getElementById("userError").innerHTML = ""; //To clear the error value after it is corrected
+          flag = 1; //no error here form will submit
+        }
+
+        if (password.value === "") {
+          document.getElementById("passError").innerHTML = "Password is empty";
+          flag = 0;
+        } else {
+          document.getElementById("passError").innerHTML = "";
+          flag = 1;
+        }
+
+        if (flag) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>
